@@ -1,11 +1,11 @@
-# Pivotal Cloud Foundry on AWS GovCloud
-**Instructions to deploy Pivotal Cloud Foundry on AWS GovCloud**
+# Automated PCF Lite Installation on AWS GovCloud
 
-PreReqs:
-- AWS Commercial and AWS GovCloud accounts with admin privileges
+## Prerequisites
+- AWS GovCloud account with admin privileges
+- Download and install [Terraform](https://www.terraform.io/downloads.html)
 ---
 
-## Launch a jumpbox ##
+## Launch a Jumpbox
 1. Create a VPC
 2. Create a subnet (e.g. 192.168.0.0/24)
 3. Create an IGW and attach it to the VPC
@@ -15,24 +15,9 @@ PreReqs:
 7. ssh -i /path/my-key-pair.pem ubuntu@52.222.60.130
 
 ## Identify AMI IDs for Ubuntu Stemcell & Ops Manager
-1. Review the [release notes](https://docs.pivotal.io/pivotalcf/pcf-release-notes/) to determine which stemcell version is compaitible with which ops man version
+1. Review the [release notes](https://docs.pivotal.io/pivotalcf/pcf-release-notes/) to determine which stemcell version is compaitible with which ops man version. For example, Ops Manager 2.3.11 is compatible with Stemcell 97.57
+2. Download the AWS release files for [Ops Manager](https://network.pivotal.io/products/ops-manager/) and [BOSH Stemcell](https://network.pivotal.io/products/stemcells-ubuntu-xenial)
+3. Open the .MF file for each and copy the AMI for the appropriate AWS region you're operating in (e.g. us-gov-west-1)
 
-```
-For example, `Ops Manager 2.3.11` is compatible with `Stemcell 97.57`
-```
-
-2. Search https://network.pivotal.io for those versions and download the AWS release files.
-
-```
-https://network.pivotal.io/products/ops-manager/
-https://network.pivotal.io/products/stemcells-ubuntu-xenial
-```
-
-3. Review the manifest file in the release file download and determine AMIs
-
-```
-Ops Manager 2.3-build.258 (us-gov-west-1) = ami-d7bad2b6
-Ubuntu Stemcell 97.57 (us-gov-west-1) = ami-d3f997b2
-```
-
-## Download PCF AWS Terraform Templates
+## Configure PCF AWS Terraform Templates
+Follow the directions [here](https://docs.pivotal.io/pivotalcf/om/aws/prepare-env-terraform.html) to download the latest PCF AWS Terraform Templates and configure them appropriately. Replace the **workspace/pivotal-cf-terraforming-aws-7e09091** directory in this repository with the updated version you just downloaded.
