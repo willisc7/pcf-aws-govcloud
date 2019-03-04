@@ -35,6 +35,4 @@ Ops Manager 2.3-build.258 (us-gov-west-1) = ami-d7bad2b6
 Ubuntu Stemcell 97.57 (us-gov-west-1) = ami-d3f997b2
 ```
 
-## Launch AMIs
-Launch the Ops Manager AMI `ami-10f67271` and proceed with standard PCF installation. :clap:
-
+## Download PCF AWS Terraform Templates
